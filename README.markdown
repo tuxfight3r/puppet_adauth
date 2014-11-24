@@ -1,4 +1,4 @@
-# Puppet module for AD authentication with SSSD and Kerberos
+#AD authentication with SSSD and Kerberos
 
 ####Table of Contents
 
@@ -12,11 +12,11 @@
 
 ##Overview
 
-The adauth module installs, configures and manages sssd daemon with kerberos.
+The puppet_adauth module installs, configures and manages sssd daemon with kerberos.
 
 ##Module Description
 
-The adauth module is supposed to make AD authentication of linuxboxes against AD really simple for redhat/centos boxes.
+The puppet_adauth module is supposed to make AD authentication of linuxboxes against AD really simple for redhat/centos boxes.
 
 ### Prerequisites
 
@@ -57,6 +57,7 @@ If needed to provide sudo access to the users, Add the relevant LinuxAdmins grou
 ##Usage
 
 adauth requires a minimum of the following parameters passed to it to function properly
+clone the module as adauth into the modules folder.
 
 ```puppet
 class { '::adauth':
