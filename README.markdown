@@ -20,7 +20,7 @@ The puppet_adauth module is supposed to make AD authentication of linuxboxes aga
 
 ### Prerequisites
 
-* Networking - Either both machines(AD/Jumpbox) lie on the same subnet or the relevanet firewall ports are open.
+* Networking - Either both machines(AD/Jumpbox) lie on the same subnet or the relevant firewall ports are open.
  (Relevant ports can be found here: http://technet.microsoft.com/en-us/library/dd772723%28v=ws.10%29.aspx )
 * AD Server is prepped with the below steps
 * Requires Puppetlabs Stdlib module
@@ -226,7 +226,7 @@ dig -t SRV _ldap._tcp.test.local
 ```puppet
 #kinit aduser (upon successfull authentication )
 
-#search user
+#search user - This would provide the adbind_userdn path for people who are not familiar with AD
 ldapsearch -H ldap://ads01.nzp.local:3268 -Y GSSAPI -b "dc=test,dc=local" "(&(objectClass=user)(sAMAccountName=mbalasundaram))"
 
 #search group
