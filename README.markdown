@@ -1,4 +1,4 @@
-#AD authentication with SSSD and Kerberos
+#AD Authentication with SSSD and Kerberos
 
 ####Table of Contents
 
