@@ -16,7 +16,7 @@ The puppet_adauth module installs, configures and manages sssd daemon with kerbe
 
 ##Module Description
 
-The puppet_adauth module is supposed to make AD authentication of linuxboxes against AD really simple for redhat/centos boxes.
+The puppet_adauth module is supposed to make Active Directory authentication of linuxboxes really simple for redhat/centos boxes.
 
 ### Prerequisites
 
