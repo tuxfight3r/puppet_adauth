@@ -1,0 +1,16 @@
+---
+adauth::package_ensure: latest
+adauth::service_enable: true
+adauth::service_ensure: running
+#Domain Description
+adauth::ad_description: 'TEST AD DOMAIN'
+adauth::ad_domain: 'test.local'
+#Server Array
+adauth::ad_servers: 
+  - ads01.nzp.local
+  - ads02.nzp.local
+#AD Bind User
+adauth::adbind_userdn: 'CN=UnixLookup,OU=TEST Users & Groups,DC=test,DC=local'
+adauth::adbind_pass: 'S3cretPassw0rd'
+adauth::aduser_search_base: 'DC=test,DC=local'
+adauth::adgroup_search_base: 'DC=test,DC=local'

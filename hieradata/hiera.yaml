@@ -1,0 +1,10 @@
+---
+:backends:
+  - yaml
+  - json
+#Change the below path to where adauth module is downloaded
+:yaml:
+  :datadir: /root/puppet_modules/adauth/hieradata
+:hierarchy:
+  - common
+

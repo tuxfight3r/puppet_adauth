@@ -1,0 +1,66 @@
+[sssd]
+config_file_version = 2
+domains = <%=@ad_domain.downcase %>
+services = nss, pam
+
+[nss]
+reconnection_retries = 3
+
+[pam]
+reconnection_retries = 3
+
+[domain/<%= @ad_domain.downcase -%>]
+description = <%= @ad_description %>
+enumerate = true
+debug_level = 0x2000
+id_provider = ldap
+auth_provider = krb5 
+chpass_provider = krb5
+access_provider = ldap
+
+# Add ldap servers which are accessible from this network
+<% if @ad_servers.count > 1 -%>
+ldap_uri=<%= @ad_servers.map { |item| "ldap://#{item}" }.join(',') %>
+<% else -%>
+ldap_uri = ldap://<%= @ad_servers.first %>
+<% end -%>
+
+# To use Kerberos, un comment the next line
+# ldap_sasl_mech = GSSAPI
+
+# The following 3 lines bind to AD. Comment them out to use Kerberos
+#ldap_default_bind_dn = CN=UnixLookup,OU=TEST Users & Groups,DC=test,DC=local
+ldap_default_bind_dn = <%= @adbind_userdn %>
+ldap_default_authtok_type = password
+ldap_default_authtok = <%= @adbind_pass %>
+
+ldap_schema = rfc2307bis
+
+#Define User Settings
+#ldap_group_search_base = DC=test,DC=local
+ldap_user_search_base = <%= @aduser_search_base %>
+ldap_user_object_class = user
+ldap_user_name=sAMAccountName
+ldap_user_uid_number = uidNumber
+ldap_user_gid_number = gidNumber
+ldap_user_shell = loginShell
+ldap_user_home_directory = unixHomeDirectory
+ldap_user_principal = userPrincipalName
+
+#Define Group Settings
+#ldap_group_search_base = OU=TEST Users & Groups,DC=test,DC=local
+ldap_group_search_base = <%= @adgroup_search_base %>
+ldap_group_object_class = group
+ldap_group_gid_number = gidNumber
+
+# Comment out if the users have the shell and home dir set on the AD side
+default_shell = /bin/bash
+fallback_homedir = /home/%d/%u
+
+ldap_access_order = expire
+ldap_account_expire_policy = ad
+ldap_force_upper_case_realm = true
+
+krb5_realm = <%= @ad_domain.upcase %>
+
+
