@@ -210,21 +210,24 @@ Sets the AD search path for querying the groups in domain.
 ####Finding the AD servers FQDN by SRV Record
 
 ```puppet
+#This will return list of AD server ip addresses for that domain
 dig -t SRV _ldap._tcp.test.local
 ```
 
 ####check if kerberos setup properly
 
 ```puppet
-#kinit aduser - (it should prompt for the user and if it works klist should display the TGT)
+#This should prompt for the user and if it works klist should display the TGT
+kinit aduser 
 
-#klist
+#list the authenticated tickets
+klist
 ```
 
 ####Query AD via ldap
 
 ```puppet
-#kinit aduser (upon successfull authentication )
+kinit aduser (upon successfull authentication )
 
 #search user - This would provide the adbind_userdn path for people who are not familiar with AD
 ldapsearch -H ldap://ads01.nzp.local:3268 -Y GSSAPI -b "dc=test,dc=local" "(&(objectClass=user)(sAMAccountName=mbalasundaram))"
