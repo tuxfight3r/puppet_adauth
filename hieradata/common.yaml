@@ -7,8 +7,8 @@ adauth::ad_description: 'TEST AD DOMAIN'
 adauth::ad_domain: 'test.local'
 #Server Array
 adauth::ad_servers: 
-  - ads01.nzp.local
-  - ads02.nzp.local
+  - ads01.test.local
+  - ads02.test.local
 #AD Bind User
 adauth::adbind_userdn: 'CN=UnixLookup,OU=TEST Users & Groups,DC=test,DC=local'
 adauth::adbind_pass: 'S3cretPassw0rd'
