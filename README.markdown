@@ -31,7 +31,7 @@ In Server Manager, add the Role Service "Identity Management for UNIX". This is 
 "Active Directory Domain Services". When it asks, use your AD domain name as the NIS name. 
 For example, with a AD domain of test.local, use test.
 
-Create 2 Groups LinuxAdmins, LinuxUsers with gid (10000,10001) and shell = /bin/bash, home dir = /home/<DOMAIN>/<USERID>
+Create 2 Groups LinuxAdmins, LinuxUsers with gid (10000,10001) and `shell = /bin/bash, home dir = /home/<DOMAIN>/<USERID>`
 
 Edit relevant users -> go to nix Attributes and configure (shell,homedir, primary group (LinuxUsers)),
  add them to LinuxAdmins group if needed. 
